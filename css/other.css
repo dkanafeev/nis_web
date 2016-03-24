@@ -5,10 +5,10 @@
 	top: 0;
 	left: 0;
 }
-.fixedPanel {
+.fixedPanelContainer {
 	position: fixed;
 	right: 0;
-	top: 8%;
+	top: 40px;
 	left: 0;
 }
 .fixedMainContainer {
@@ -18,7 +18,8 @@
 a:link, a:visited {
 	background-color: #f44336;
 	color: white;
-	padding: 14px;
+	width: 100%;
+	padding: 10px 0px 10px 0px;
 	text-align: center; 
 	text-decoration: none;
 	display: inline-block;
@@ -56,5 +57,11 @@ a:link, a:visited {
 	.topContent {
 		margin-right: 1% !important;
 		width: 98%;
+	}
+	.fixedPanelContainer {
+		position: fixed;
+		right: 0;
+		top: 120px;
+		left: 0;
 	}
 }

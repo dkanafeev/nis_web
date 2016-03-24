@@ -23,24 +23,47 @@ document.getElementById('content_container').innerHTML = "\<div class=\"topConte
 	},
 	{
 		"id" : "mi_note",
-		"title": "MI Note",
+		"title": "Xiaomi MI Note",
 		"description": "OS: Android 5.1\nYear: 2014",
 		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
 	},
 	{
 		"id" : "mi_note_pro",
-		"title": "MI Note Pro",
+		"title": "Xiaomi MI Note Pro",
+		"description": "OS: Android 5.1\nYear: 2015",
+		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
+	},
+	{
+		"id" : "mi_1_plus",
+		"title": "Xiaomi MI 1 Plus",
+		"description": "OS: Android 5.1\nYear: 2015",
+		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
+	},
+	{
+		"id" : "mi_1_youth",
+		"title": "Xiaomi MI 1 Youth",
+		"description": "OS: Android 5.1\nYear: 2015",
+		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
+	},
+	{
+		"id" : "mi_1_s",
+		"title": "Xiaomi MI 1S",
+		"description": "OS: Android 5.1\nYear: 2015",
+		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
+	},
+	{
+		"id" : "mi_1_s_youth",
+		"title": "Xiaomi MI 1S Youth",
 		"description": "OS: Android 5.1\nYear: 2015",
 		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
 	}
 ]
-for ( var i = 0 ; i < 5; i++) {
+for (  i in deviceList) {
 	// read device
-	var device_id = "mi_" + i + "_c";
-	var device_title = "Xiaomi Mi " + i + "C";
-	var device_decs = "OS: Android 5.1\n \
-Year: 2015";
-	var device_img = "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
+	var device_id = deviceList[i]["id"];
+	var device_title = deviceList[i]["title"];
+	var device_decs = deviceList[i]["description"];
+	var device_img = deviceList[i]["image"];
 	
 	// add device in menu
 	document.getElementById('panel_container').innerHTML = document.getElementById('panel_container').innerHTML + "\
@@ -52,7 +75,7 @@ Year: 2015";
 	document.getElementById('content_container').innerHTML = document.getElementById('content_container').innerHTML + "\
 		<div class=\"content\">\
 			<div class=\"content_header\">\
-				<a name=\"" + device_id + "\">" + device_title + "</a>\
+				<a class=\"offset\"name=\"" + device_id + "\">" + device_title + "</a>\
 			</div>\
 			<div class=\"content_image\">\
 				<img src=\"" + device_img + "\"/>\

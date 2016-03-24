@@ -32,11 +32,12 @@
 	font-size: 25px;
 }
 /*****Content elements*****/
+.offset {
+	padding-top: 60px;
+}
 .content {
 	float: right;
 	width: 80%;
-	height: 25%;
-	max-height: 300px;
 	margin-right: 1%;
 	margin-top: 1%;
 	background: #FFFFFF; 
@@ -47,22 +48,19 @@
 	width: auto;
 	margin-left: 1%;
 	margin-top: 1%;
-	height: auto%;
+	height: 25px;
 	background: #FFFFFF; 
 	font-weight: bold;
 	font-size: 20px;
 }
 .content_image {
-	display: block;
-	width: 10px !important;
-	height: auto !important;
 	float: left;
-	margin-left: 1%;
-	margin-top: 1%;
+	margin: 1% 1% 1% 1%;
 	background: #FFFFFF; 
 }
 .content_text {
-	width: 100%;
+	margin-left: 1%;
+	float: left;
 	height: auto;
 	white-space: pre;
 	background: #FFFFFF; 
