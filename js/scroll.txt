@@ -1,0 +1,14 @@
+/* Scroll*/
+	document.addEventListener("scroll", function() {
+		topContainerSize = document.getElementById("top_container").clientHeight 
+		if (window.pageYOffset >= topContainerSize) {
+			document.getElementById("top_container").classList.add("fixedMenu")
+			document.getElementById("panel_container").classList.add("fixedpanel_container")
+			document.getElementById("main_container").classList.add("fixedMainContainer")
+		}
+		else {
+			document.getElementById("top_container").classList.remove("fixedMenu")
+			document.getElementById("panel_container").classList.remove("fixedpanel_container")
+			document.getElementById("main_container").classList.remove("fixedMainContainer")
+		}
+	});
