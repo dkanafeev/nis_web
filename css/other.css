@@ -1,18 +1,17 @@
 /*** Other ***/
 .fixedMenu {
 	position: fixed;
-	right: 0;
 	top: 0;
-	left: 0;
 }
 .fixedPanelContainer {
 	position: fixed;
-	right: 0;
 	top: 40px;
-	left: 0;
 }
 .fixedMainContainer {
-	margin-top: 40px;
+	margin-top: -40px;
+	padding-top: 40px;
+	max-width: 1600px;
+	margin: 0px auto;
 }
 
 a:link, a:visited {
@@ -43,7 +42,8 @@ a:link, a:visited {
 		height: 120px;
 	}
 	.fixedMainContainer {
-		margin-top: 120px;
+		margin-top: -120px;
+		padding-top: 120px;
 	}
 	.menuElement{
 		float: none;
@@ -57,11 +57,5 @@ a:link, a:visited {
 	.topContent {
 		margin-right: 1% !important;
 		width: 98%;
-	}
-	.fixedPanelContainer {
-		position: fixed;
-		right: 0;
-		top: 120px;
-		left: 0;
 	}
 }

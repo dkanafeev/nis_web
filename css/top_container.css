@@ -14,15 +14,19 @@
 	background-image: url(http://st.xiaomi-you.ru/9/1784/426/Xiaomi-logo-banner.jpg);
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: 20%;
+	background-size: auto 100%;
 }
 #menu_container{
 	/* size */
 	width: 100%;
+	background: #FF6E00;
+}
+#menu{
+	/* size */
 	height: 40px;
 	margin: 0px auto;
+	width: 100%;
 	max-width: 1600px;
-	background: #FF6E00;
 }
 /*****Menu elements*****/
 .menuElement {

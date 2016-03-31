@@ -4,16 +4,6 @@ var topContentText = "Xiaomi was founded in 2010 by serial entrepreneur Lei Jun,
 document.getElementById('content_container').innerHTML = "\<div class=\"topContent\">" + topContentText + "</div>";
 
 // Devices
-/*
-			<div class="panelElement"><a href="#mi_1_plus">MI1 Plus</a></div>
-			<div class="panelElement"><a href="#mi_1_youth">MI1 Youth</a></div>
-			<div class="panelElement"><a href="#mi_1_s">MI1S</a></div>
-			<div class="panelElement"><a href="#mi_1_s_youth">MI1S Youth</a></div>
-			<div class="panelElement"><a href="#mi_2">MI2</a></div>
-			<div class="panelElement"><a href="#mi_2_a">MI2A</a></div>
-			<div class="panelElement"><a href="#mi_2_s">MI2S</a></div>
-			<div class="panelElement"><a href="#mi_3">MI3</a></div>
-*/
  var deviceList = [
 	{
 		"id" : "mi_4_c",
@@ -56,7 +46,73 @@ document.getElementById('content_container').innerHTML = "\<div class=\"topConte
 		"title": "Xiaomi MI 1S Youth",
 		"description": "OS: Android 5.1\nYear: 2015",
 		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
-	}
+		},
+	{
+		"id" : "mi_2",
+		"title": "Xiaomi MI 2",
+		"description": "OS: Android 5.1\nYear: 2015",
+		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
+	},
+	{
+		"id" : "mi_2_a",
+		"title": "Xiaomi MI 2A",
+		"description": "OS: Android 5.1\nYear: 2015",
+		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
+	},
+	{
+		"id" : "mi_2_s",
+		"title": "Xiaomi MI 2S",
+		"description": "OS: Android 5.1\nYear: 2015",
+		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
+	},
+	{
+		"id" : "mi_3",
+		"title": "Xiaomi MI 3",
+		"description": "OS: Android 5.1\nYear: 2015",
+		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
+ 	},
+	{
+		"id" : "mi_4",
+		"title": "Xiaomi MI 4",
+		"description": "OS: Android 5.1\nYear: 2015",
+		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
+ 	},
+	{
+		"id" : "mi_5",
+		"title": "Xiaomi MI 5",
+		"description": "OS: Android 5.1\nYear: 2015",
+		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
+ 	},
+	{
+		"id" : "mi_6",
+		"title": "Xiaomi MI 6",
+		"description": "OS: Android 5.1\nYear: 2015",
+		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
+ 	},
+	{
+		"id" : "mi_7",
+		"title": "Xiaomi MI 7",
+		"description": "OS: Android 5.1\nYear: 2015",
+		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
+ 	},
+	{
+		"id" : "mi_8",
+		"title": "Xiaomi MI 8",
+		"description": "OS: Android 5.1\nYear: 2015",
+		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
+ 	},
+	{
+		"id" : "mi_9",
+		"title": "Xiaomi MI 9",
+		"description": "OS: Android 5.1\nYear: 2015",
+		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
+ 	},
+	{
+		"id" : "mi_10",
+		"title": "Xiaomi MI 10",
+		"description": "OS: Android 5.1\nYear: 2015",
+		"image": "http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg"
+ 	}
 ]
 for (  i in deviceList) {
 	// read device
