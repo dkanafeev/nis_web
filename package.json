@@ -5,4 +5,7 @@
   "main": "index.js",
   "author": "",
   "license": "BSD",
+  "dependencies": {
+    "sqlite3": "~2.2.3"
+  }
 }

@@ -1,16 +1,16 @@
-var http = require('http'),
-    fs = require('fs');
 
-console.log('html: ' + __dirname );
+HOME_PAGE_XIAOMI=1;
+
+var http    = require('http'),
+    fs      = require('fs'),
+    sqlite3 = require('sqlite3').verbose();
 
 function send_file (file, type, res, code)
 {
     try {
         fs.readFile(__dirname + file, function (err, data) {
             if (err) console.log(err);
-            res.writeHead(code, {'Content-Type': type});
-            res.write(data);
-            res.end();
+            else send_data(data, type, res, code);
         });
     }
     catch (e) {
@@ -19,23 +19,92 @@ function send_file (file, type, res, code)
     }
 }
 
+function send_data (data, type, res, code)
+{
+    res.writeHead(code, {'Content-Type': type});
+    res.write(data);
+    res.end();
+}
+
+function create_table()
+{
+    var db = new sqlite3.Database('mydb.db');
+    db.run("CREATE TABLE if not exists device_table (id INTEGER PRIMARY KEY, owner TEXT, title TEXT, desc TEXT, image TEXT)");
+    for (var i = 0; i < 20; i++) {
+        str = "" 
+//        str = str + i + ", ";
+        str = str + "\'Xiaomi\', "
+        str = str + "\'Xiaomi MI"+i+"\', "
+        str = str + "\'Description1 Description2 Description3\', "
+        str = str + "\'http://devdb.ru/data/img/img5601ced4411447.20581044p.jpg\'"
+        query="INSERT into device_table (owner, title, desc, image) VALUES (" + str + ")"
+        console.log(query);
+        db.run(query);
+    }
+    db.close();
+}
+
+function create_data (id, res)
+{
+   data="";
+   switch (id)
+   {
+      case HOME_PAGE_XIAOMI:
+          owner = "Xiaomi";
+          var db = new sqlite3.Database('mydb.db');
+          db.all("SELECT id, title, desc, image from device_table", function(err, rows){
+              data = data + "deviceList = [ \n"; 
+              if (err) console.log(err);
+              else if (rows.length != 0) {
+                  rows.forEach(function (row) {
+                      if (err) console.log(err);
+                      else data = data +
+                           "{\"id\"   : \"" + row.id     + "\", " +
+                           "\"title\" : \"" + row.title  + "\", " +
+                           "\"desc\"  : \"" + row.desc   + "\", " +
+                           "\"image\" : \"" + row.image  + "\"  " +
+                           "},\n";              
+                  })
+              }
+              data = data + "];\n render_device(deviceList)"
+              console.log(data);
+              send_data(data, 'text/javascript', res, 200);
+          });
+          db.close();
+          break;
+      default:
+         data="topContentText = \"Error!\"";
+         send_data (data, 'text/javascript', res, 200);
+   }
+}
+
+//create_table();
+console.log('#######################################');
+console.log('############ DATABASE CONTENT #########');
+var db = new sqlite3.Database('mydb.db');  
+db.all("SELECT id, title, desc, image FROM device_table", function(err, rows) {  
+            console.log(rows); 
+    });   
+db.close(); 
+
 http.createServer(function (req, res) {
     console.log('#######################################');
-    console.log('req.url: ' + req.url);
 
     if (req.url == "/")
-      req.url = "/hello.html"; 
+        req.url = "/hello.html"; 
 
     if(req.url.indexOf('.html') != -1){
         console.log('html: ' + req.url);
         send_file(req.url, 'text/html', res, 200);
     }
-
-    else if(req.url.indexOf('.js') != -1){
-       console.log('js: ' + req.url);
-       send_file(req.url, 'text/javascript', res, 200);
+    else if(req.url.indexOf('data.js') != -1){
+        console.log('js: ' + req.url);
+        create_data(HOME_PAGE_XIAOMI, res);
     }
-
+    else if(req.url.indexOf('.js') != -1){
+        console.log('js: ' + req.url);
+        send_file(req.url, 'text/javascript', res, 200);
+    }
     else if(req.url.indexOf('.css') != -1){
         console.log('css: ' + req.url);
         send_file(req.url, 'text/css', res, 200);
