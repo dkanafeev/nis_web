@@ -31,6 +31,17 @@
             <!--text.js-->
         </div>
         <div id="content_container">
+            <form action="/add_record" method="POST">
+                Owner:
+                <input name="owner"/>
+                Device:
+                <input name="title"/>
+                Desc:
+                <input name="desc"/>
+                Image:
+                <input name="image"/>
+                <button type="submit" onclick="javascript:window.location.reload();">Submit</button>
+            </form>
             <!--text.js-->
         </div>
         <script language="javascript" type="text/javascript" src="js/text.js"></script>

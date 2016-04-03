@@ -26,13 +26,46 @@ function send_data (data, type, res, code)
     res.end();
 }
 
+function getQueryVariable(variable, query) {
+    var vars = query.toString().split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+}
+
+function add_record(owner, title, desc, image)
+{  
+   var db = new sqlite3.Database('mydb.db');
+   str = ""
+   str = str + "\'" +  owner + "\', "
+   str = str + "\'" +  title + "\', "
+   str = str + "\'" +  desc  + "\', "
+   str = str + "\'" +  image + "\'"
+   query="INSERT into device_table (owner, title, desc, image) VALUES (" + str + ")"
+   console.log(query);
+   db.run(query);
+   db.close();
+}
+ 
+function del_record(id)
+{
+   var db = new sqlite3.Database('mydb.db');
+   query="DELETE from device_table where id=" + id;
+   console.log(query);
+   db.run(query);
+   db.close();
+}
+
 function create_table()
 {
     var db = new sqlite3.Database('mydb.db');
     db.run("CREATE TABLE if not exists device_table (id INTEGER PRIMARY KEY, owner TEXT, title TEXT, desc TEXT, image TEXT)");
     for (var i = 0; i < 20; i++) {
         str = "" 
-//        str = str + i + ", ";
         str = str + "\'Xiaomi\', "
         str = str + "\'Xiaomi MI"+i+"\', "
         str = str + "\'Description1 Description2 Description3\', "
@@ -108,6 +141,23 @@ http.createServer(function (req, res) {
     else if(req.url.indexOf('.css') != -1){
         console.log('css: ' + req.url);
         send_file(req.url, 'text/css', res, 200);
+    }
+    else if(req.url.indexOf('add_record') != -1){
+        console.log('add_record: ' + req.url);
+        req.on('data', function(data) {
+            add_record (getQueryVariable('owner', data), 
+                        getQueryVariable('title', data), 
+                        getQueryVariable('desc',  data), 
+                        getQueryVariable('image', data));            
+        })
+        send_file('/hello.html', 'text/html', res, 200);
+    }
+    else if(req.url.indexOf('del_record') != -1){
+        console.log('del_record: ' + req.url);
+        req.on('data', function(data) {
+            del_record (getQueryVariable('id', data))
+        })
+        send_file('/hello.html', 'text/html', res, 200);
     }
     else {
         console.log('undefined: ' + req.url);
